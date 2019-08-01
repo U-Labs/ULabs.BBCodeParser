@@ -74,6 +74,27 @@ access to VBs database, this part should be kept seperately.
 There are some other bugs for sure. So feel free to create issues and even better: Try to help me fixing them with pull requests. 
 Contributions are welcome! :)
 
+## Contributions/Coding Conventions
+
+As said above: Every help on this library is welcome! The code in this repository should fit to 
+[the official C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions). 
+My only intentionally deviation from this were the curly brackets, which are not placed in an extra line. So code should looke like 
+
+```cs
+if(true) {
+	myClass.DoAction();
+}
+```
+
+instead of 
+
+```cs
+if(true) 
+{
+	myClass.DoAction();
+}
+```
+
 ## Credits
 This project itself uses the following external open source libraries to which I would like to express my gratitude:
 * [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer)
