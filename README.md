@@ -4,7 +4,14 @@ A vBulletin 4 compatible BB-Code parser for .NET Standard 2 OSS under [GNU GPLv3
 ![Demo](https://u-img.net/img/5022Nk.png)
 
 ## Usage 
-Install [the official NuGet-Package ULabs.BBCodeParser](https://www.nuget.org/packages/ULabs.BBCodeParser). 
+Install [the official NuGet-Package ULabs.BBCodeParser](https://www.nuget.org/packages/ULabs.BBCodeParser):
+
+```bash
+# Visual Studio Package Manager Console
+Install-Package ULabs.BBCodeParser
+# DotNet CLI (e.g. for VS Code)
+dotnet add package ULabs.BBCodeParser
+```
 You need to inject an instance of `BBCodeToHtml` and pass the BBCode to the `Parse(string bbCode)` method like this: 
 ```cs
 string html = BBCodeToHtml.Parse("This is [b]Bold[/b]");
