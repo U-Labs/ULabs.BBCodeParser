@@ -78,7 +78,7 @@ still work after years without update.
 I also want to avoid parsing using Regular Expression. It seems not the right 
 tool for structured BBCode. So I wrote my own, which also gave me some experience how parser work. 
 
-## Stabilits and known limitations
+## Stability and known limitations
 Currently, this library is not considered as production ready. Some things doesn't work well yet. For example formatting in lists. 
 And also attachments from vBulletin aren't parsed yet. I had an approach that works, but since we need  access to VBs database, 
 this part should be kept seperately. 
