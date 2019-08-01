@@ -4,6 +4,7 @@ A vBulletin 4 compatible BB-Code parser for .NET Standard 2 OSS under [GNU GPLv3
 ![Demo](https://u-img.net/img/5022Nk.png)
 
 ## Usage 
+Install [the official NuGet-Package ULabs.BBCodeParser](https://www.nuget.org/packages/ULabs.BBCodeParser). 
 You need to inject an instance of `BBCodeToHtml` and pass the BBCode to the `Parse(string bbCode)` method like this: 
 ```cs
 string html = BBCodeToHtml.Parse("This is [b]Bold[/b]");
@@ -13,6 +14,7 @@ The solution contains a simple Razor views based demo project with our markup fr
 NuGet package is planned. 
 
 ### Dependency injection
+For ASP.NET Core, DI is the recommended way to resolve your dependencies. 
 We don't have interfaces yet for clean dependency injection, but a helper method is already avaliable:
 
 ```cs
