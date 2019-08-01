@@ -170,9 +170,9 @@ namespace ULabs.BBCodeParser {
                 nodePos.CloseTagEnd = closeTagStart + assumedCloseTag.Length;
 
                 string contentLower = bbCode.Substring(nodePos.OpenTagStart, nodePos.CloseTagEnd - nodePos.OpenTagStart);
-                // ToDo: ToCharArray() is a compatibility fix for the .NET Standard migration, since there is no overload for strings. We should test if this work as expected
-                int openTagsCount = contentLower.Split(lowerOpenTag.ToCharArray()).Length - 1;
-                int closeTagsCount = contentLower.Split(lowerAssumedCloseTag.ToCharArray()).Length - 1;
+                // .NET Standard doesn't support the simple Split(string delimiter) overload, but it seems we can use the following overload without any issues
+                int openTagsCount = contentLower.Split(new string[] { lowerOpenTag }, StringSplitOptions.None).Length - 1;
+                int closeTagsCount = contentLower.Split(new string[] { lowerAssumedCloseTag }, StringSplitOptions.None).Length - 1;
 
                 openCloseTagsMatch = openTagsCount == closeTagsCount;
                 endTagSearchStartPos = nodePos.CloseTagStart + 1;
