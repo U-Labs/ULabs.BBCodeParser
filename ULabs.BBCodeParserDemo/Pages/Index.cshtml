@@ -1,8 +1,44 @@
 ﻿@page
 @model IndexModel
-@using ULabs.BBCodeParser
+@using ULabs.BBCodeParser.Html
+@inject BBCodeToHtml bbCodeToHtml
 @{
     ViewData["Title"] = "Home page";
 }
 
+<style>
+     .text-shadow {
+          text-shadow: 1px 1px #ff0000;
+     }
+</style>
+
 <h1>ULabs BBCode-Parser Demo</h1>
+
+@Html.Raw(bbCodeToHtml.Parse(""))
+
+@Html.Raw(bbCodeToHtml.Parse(@"
+This is [b]bold[/b], [i]italic[/i], [u]underline[/u] and [s]strike through[/s].
+
+More complex example: 
+[list]
+[*] List item #1
+[*] List item #2
+[/list]
+
+[quote]This is a quote[/quote]
+
+[center]Something centered[/center]
+
+[color=red]Attention! Important text[/color]
+[url=https://u-labs.de/forum]Link to U-Labs[/url]
+
+Embedded image: 
+[img]https://u-img.net/img/8016La.png[/img]
+
+[size=7]Size 7 headline[/size]
+[sup]A very small text[/sup]
+[font=serif]Playing with serif font family[/font]
+[shadow]Custom BBCodes are possible too: Here we have a shadow code[/shadow]
+
+[spoiler]Test[/spoiler]
+"))
