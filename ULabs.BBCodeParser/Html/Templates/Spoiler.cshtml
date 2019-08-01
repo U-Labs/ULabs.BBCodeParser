@@ -1,0 +1,29 @@
+﻿@using ULabs.BBCodeParser
+@using ULabs.BBCodeParser.Tools
+
+@* Required for syntax highlighting on RazorLight functions like @Raw() *@
+@using RazorLight
+@inherits TemplatePage<BBCodeNode>
+
+@model BBCodeNode
+
+@{
+    // Make the spoiler unique so that no other spoiler on the same page got also opened by accident
+    string id = "spoiler" + Hash.Md5(Model.ToString());
+
+    string title = "Spoiler";
+    if (!string.IsNullOrEmpty(Model.Argument)) {
+        title += $": {Model.Argument}";
+    }
+}
+<div class="card mb-3">
+    <button class="card-header" data-toggle="collapse" data-target="#@id">@title</button>
+    <div class="card-body collapse" id="@id">
+        <p class="card-text">
+            @* Shouldnt be the case - but just to be sure, since @Raw throw exceptions if argument is null *@
+            @if (!string.IsNullOrEmpty(Model.InnerHtml)) {
+                @Raw(Model.InnerHtml)
+            }
+        </p>
+    </div>
+</div>
