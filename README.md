@@ -16,6 +16,7 @@ NuGet package is planned.
 We don't have interfaces yet for clean dependency injection, but a helper method is already avaliable:
 
 ```cs
+using ULabs.BBCodeParser.Html;
 namespace ULabs.BBCodeParserDemo {
     public class Startup {
         public void ConfigureServices(IServiceCollection services) {
