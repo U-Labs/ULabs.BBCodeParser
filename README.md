@@ -44,7 +44,7 @@ This simply replaces `[b]` with `<b>` and it's corresponding close tag.
 
 Fore more complex tags, the `BBCode` class has an overload for some delegate method that get all required information in a `Node` object:
 
-```
+```cs
 var complexCustomCode = new BBCode("[shadow]", (node) => $"<span class='text-shadow'>{node.InnerHtml}</span>");
 ```
 
