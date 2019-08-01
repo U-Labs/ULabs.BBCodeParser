@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULabs.BBCodeParser", "ULabs.BBCodeParser\ULabs.BBCodeParser.csproj", "{D92058B9-52C7-4FEE-A600-052CBB6CB822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULabs.BBCodeParserDemo", "ULabs.BBCodeParserDemo\ULabs.BBCodeParserDemo.csproj", "{55621FE2-087E-4CC5-AD98-DA3BFBEB1C27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D92058B9-52C7-4FEE-A600-052CBB6CB822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D92058B9-52C7-4FEE-A600-052CBB6CB822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D92058B9-52C7-4FEE-A600-052CBB6CB822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D92058B9-52C7-4FEE-A600-052CBB6CB822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55621FE2-087E-4CC5-AD98-DA3BFBEB1C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55621FE2-087E-4CC5-AD98-DA3BFBEB1C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55621FE2-087E-4CC5-AD98-DA3BFBEB1C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55621FE2-087E-4CC5-AD98-DA3BFBEB1C27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB8D2B73-45BA-4076-BDBB-A953D23C28E2}
+	EndGlobalSection
+EndGlobal
