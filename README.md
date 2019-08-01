@@ -1,7 +1,7 @@
 # U-Labs BBCode-Parser
 A vBulletin 4 compatible BB-Code parser for .NET Standard 2 OSS under [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/).
 
-![Demo](https://u-img.net/img/5022Nk.png)
+![Demo](https://u-img.net/img/8694Lb.png)
 
 ## Usage 
 Install [the official NuGet-Package ULabs.BBCodeParser](https://www.nuget.org/packages/ULabs.BBCodeParser):
@@ -72,15 +72,18 @@ But now it's time to create a better structure. Since I believe in open source a
 give something back for the community. 
 
 The motivation behind this parser was that I couldn't find an reasonably actively maintained project for .NET Core/Standard that is 
-customizeable or at least supports vBulletin's BBCodes. And I also want to avoid parsing using Regular Expression. It seems not the right 
+customizeable or at least supports vBulletin's BBCodes. Since Linux is the target platform, older 4.X Librarys are not suiteable. Even if they
+still work after years without update. 
+
+I also want to avoid parsing using Regular Expression. It seems not the right 
 tool for structured BBCode. So I wrote my own, which also gave me some experience how parser work. 
 
 ## Stabilits and known limitations
-Currently, this library is not considered as production ready. Some things doesn't work well yet. For example formatting in lists, 
-handling multiple headlines. And also attachments from vBulletin aren't parsed yet. I had an approach that works, but since we need 
-access to VBs database, this part should be kept seperately. 
+Currently, this library is not considered as production ready. Some things doesn't work well yet. For example formatting in lists. 
+And also attachments from vBulletin aren't parsed yet. I had an approach that works, but since we need  access to VBs database, 
+this part should be kept seperately. 
 
-There are some other bugs for sure. So feel free to create issues and even better: Try to help me fixing them with pull requests. 
+There are some other bugs for sure. So feel free to test, create issues and even better: Try to help me fixing them with pull requests. 
 Contributions are welcome! :)
 
 ## Contributions/Coding Conventions
