@@ -1,5 +1,5 @@
 # U-Labs BBCode-Parser
-A vBulletin compatible BB-Code parser for .NET Standard 2 OSS under [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/).
+A vBulletin 4 compatible BB-Code parser for .NET Standard 2 OSS under [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/).
 
 ![Demo](https://u-img.net/img/5022Nk.png)
 
