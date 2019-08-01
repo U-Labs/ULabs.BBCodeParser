@@ -1,5 +1,5 @@
 # U-Labs BBCode-Parser
-A vBulletin compatible BB-Code parser for .NET Standard 2. OSS under [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/).
+A vBulletin compatible BB-Code parser for .NET Standard 2 OSS under [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/).
 
 ![Demo](https://u-img.net/img/5022Nk.png)
 
@@ -11,6 +11,23 @@ string html = BBCodeToHtml.Parse("This is [b]Bold[/b]");
 The solution contains a simple Razor views based demo project with our markup from the demo screenshot above. See 
 [Index.html](./ULabs.BBCodeParserDemo/Pages/Index.cshtml) with the sample code. A simple integration into other projects using a 
 NuGet package is planned. 
+
+### Dependency injection
+We don't have interfaces yet for clean dependency injection, but a helper method is already avaliable:
+
+```cs
+namespace ULabs.BBCodeParserDemo {
+    public class Startup {
+        public void ConfigureServices(IServiceCollection services) {
+            services.AddBBCodeParser();
+            // ...
+        }
+    }
+}
+
+```
+The `AddBBCodeParser()` method can register all services with their default configuration. Changes are only required if you would like to
+modify or extend BBCodes. 
 
 ## Customizing BBCodes
 Common BBCodes like formattings were already covered by this library. This happens in 
