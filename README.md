@@ -37,7 +37,16 @@ namespace ULabs.BBCodeParserDemo {
 
 ```
 The `AddBBCodeParser()` method can register all services with their default configuration. Changes are only required if you would like to
-modify or extend BBCodes. 
+modify or extend BBCodes. To use the parser, inject it's service. 
+
+Razor example: 
+
+```cs
+@using ULabs.BBCodeParser.Html
+@inject BBCodeToHtml bbCodeToHtml
+
+@Html.Raw(bbCodeToHtml.Parse("This is [b]bold[/b], [i]italic[/i], [u]underline[/u] and [s]strike through[/s]."));
+```
 
 ## Customizing BBCodes
 Common BBCodes like formattings were already covered by this library. This happens in 
