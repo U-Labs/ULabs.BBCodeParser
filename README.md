@@ -120,3 +120,4 @@ if(true)
 This project itself uses the following external open source libraries to which I would like to express my gratitude:
 * [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer)
 * [RazorLight](https://github.com/toddams/RazorLight)
+* [Html Agility Pack](https://html-agility-pack.net/)

@@ -2,6 +2,7 @@
 @model IndexModel
 @using ULabs.BBCodeParser.Html
 @inject BBCodeToHtml bbCodeToHtml
+@inject BBCodeEditorSanitizer bbCodeEditorSanitizer
 @{
     ViewData["Title"] = "Home page";
 }

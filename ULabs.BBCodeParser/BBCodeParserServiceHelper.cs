@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ULabs.BBCodeParser.Html;
+using ULabs.BBCodeParser.Tools;
 
 namespace ULabs.BBCodeParser {
     public static class BBCodeParserServiceHelper {
@@ -14,6 +15,7 @@ namespace ULabs.BBCodeParser {
 
             // Letting .NET Core create the instance will end in an empty rule set (parameters doesn't seems empty then)
             services.AddSingleton<HtmlSanitizer>(x => new HtmlSanitizer());
+            services.AddSingleton<BBCodeEditorSanitizer>();
 
             services.AddSingleton<RazorLightEngine>(x => {
                 var engine = new RazorLightEngineBuilder()
