@@ -155,6 +155,11 @@ namespace ULabs.BBCodeParser.Html {
             } else {
                 string openTag = code.HtmlTag;
                 if (!string.IsNullOrEmpty(code.ArgumentHtmlAttribute)) {
+                    // When theres no custom display text (e.g. [url]https://ecosia.org[/url]) we set the argument like in [url=https://ecosia.org]https://ecosia.org[/url] to have a unified link target
+                    if(code.BBCodeName == "url" && node.Argument == null) {
+                        node.Argument = node.InnerContent;
+                    }
+
                     openTag = openTag.Replace(">", $" {code.ArgumentHtmlAttribute}=\"{node.Argument}\">");
                 }
                 string closeTag = code.HtmlTag.Replace("<", "</");

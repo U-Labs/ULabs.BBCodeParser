@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <Version>0.1.3</Version>
+    <Version>0.1.4</Version>
     <Authors>DMW007</Authors>
     <Company>U-Labs</Company>
     <Description>VBulletin compatible BBCode-Parser for .NET Standard</Description>
@@ -11,6 +11,7 @@
     <PackageProjectUrl>https://u-labs.de/forum</PackageProjectUrl>
     <RepositoryUrl>https://github.com/U-Labs/ULabs.BBCodeParser</RepositoryUrl>
     <PackageTags>net-core,bbcode,bbcode-parser,c-sharp,vbulletin,net-standard</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
