@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <Version>0.1.4</Version>
+    <Version>0.1.4.1</Version>
     <Authors>DMW007</Authors>
     <Company>U-Labs</Company>
     <Description>VBulletin compatible BBCode-Parser for .NET Standard</Description>

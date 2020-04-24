@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RazorLight;
 using ULabs.BBCodeParser;
+using ULabs.BBCodeParser.Html;
 
 namespace ULabs.BBCodeParserDemo {
     public class Startup {
@@ -20,7 +22,15 @@ namespace ULabs.BBCodeParserDemo {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
-            services.AddBBCodeParser();
+            // Customization: Add an attachment BBCode that could be parsed by e.g. building a link
+            var customBBCodes = new List<BBCode>();
+            var attachments = new BBCode("[attach]", (node) => {
+                return $"<b>Found Attachment with ID = {node.InnerContent}";
+            });
+            customBBCodes.Add(attachments);
+            Func<IServiceProvider, BBCodeHtmlMapper> bbCodeHtmlMapperFunc = (sp) => new BBCodeHtmlMapper(sp.GetRequiredService<RazorLightEngine>(), customBBCodes);
+            // If you don't want to use any customization, just call AddBBCodeParser without any arguments and it will use the default BBCodes 
+            services.AddBBCodeParser(bbCodeHtmlMapperFunc);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

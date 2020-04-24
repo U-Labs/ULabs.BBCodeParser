@@ -8,8 +8,13 @@ namespace ULabs.BBCodeParser.Html {
         readonly RazorLightEngine razor;
 
         public List<BBCode> Codes { get; set; }
-
-        public BBCodeHtmlMapper(RazorLightEngine razor) {
+        /// <summary>
+        /// Holds mappings of BBCode to HTML generating mapping functions. Dont use this class directly, use <seealso cref="BBCodeToHtml"/> instead.
+        /// </summary>
+        /// <param name="razor">Injected dependency</param>
+        /// <param name="bbCodes">Provide a list of BBCodes with mapping functions for parsing</param>
+        /// <param name="overrideDefaultBBCodes">If true, all default BBCodes were deleted and just <paramref name="bbCodes"/> are used for parsing. If false, <paramref name="bbCodes"/> got added to the defaults.</param>
+        public BBCodeHtmlMapper(RazorLightEngine razor, List<BBCode> bbCodes = null, bool overrideDefaultBBCodes = false) {
             this.razor = razor;
 
             // Needn't to care about security here since BBCodeToHtml.Parse() will sanitize all output to be sure
@@ -34,6 +39,14 @@ namespace ULabs.BBCodeParser.Html {
                 new BBCode("[shadow]", (node) => $"<span class='text-shadow'>{node.InnerHtml}</span>"),
                 new BBCode("[spoiler]", (node) => GetEmbeddRazorTemplate("Spoiler", node))
             };
+
+            if (overrideDefaultBBCodes) {
+                Codes.Clear();
+            }
+
+            if(bbCodes != null) {
+                Codes.AddRange(bbCodes);
+            }
         }
 
         string ParseHadlines(BBCodeNode node) {
