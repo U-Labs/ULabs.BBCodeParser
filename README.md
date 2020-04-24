@@ -75,6 +75,23 @@ var fontCode = new BBCode("[font]", (node) => $"<span style='font-family: {node.
 
 So `[font=Arial]Hi![/font]` would result in `Arial` as argument, where `InnerHtml` is `Hi!`. 
 
+### Use customized BBCodes
+To apply those customizations, you can pass a `Func<IServiceProvider, BBCodeHtmlMapper>` to the `AddBBCodeParser` helper. 
+It's constructor accepts a `List<BBCode>`, which were added to the default ones. If you don't want to use the default ones, 
+set `overrideDefaultBBCodes` to true. Then the default ones are replaced by the provided ones.
+
+The following example adds an additional BBCodes for attachments and replace all attachments with some notice text about the attachment ID:
+
+```csharp
+var customBBCodes = new List<BBCode>();
+var attachments = new BBCode("[attach]", (node) => {
+    return $"<b>Found Attachment with ID = {node.InnerContent}";
+});
+customBBCodes.Add(attachments);
+Func<IServiceProvider, BBCodeHtmlMapper> bbCodeHtmlMapperFunc = (sp) => new BBCodeHtmlMapper(sp.GetRequiredService<RazorLightEngine>(), customBBCodes);
+services.AddBBCodeParser(bbCodeHtmlMapperFunc);
+```
+
 ## Motivation
 This project is part of my approach to develop on a modern .NET Core application stack for vBulletin. I did some POCs, also on the database.
 But now it's time to create a better structure. Since I believe in open source and also use a lot of OSS, I'd also like to share my work to
