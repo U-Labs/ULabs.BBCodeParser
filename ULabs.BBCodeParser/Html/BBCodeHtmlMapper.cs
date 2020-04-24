@@ -77,30 +77,6 @@ namespace ULabs.BBCodeParser.Html {
             }
             return html + "</blockquote>";
         }
-
-        // ToDo: Replace this by some kind of abstraction, when VBEntity is also open-sourced
-        //string ParseAttachmentFunc(BBCodeNode node) {
-        //    if (!int.TryParse(node.InnerContent, out int attachmentId)) {
-        //        return HtmlWarning("Fehler: Anhangs-Id kann nicht ermittelt werden!");
-        //    }
-
-        //    var attachment = attachmentManager.GetAttachmentInfo(attachmentId).Result;
-        //    if (attachment == null) {
-        //        return HtmlWarning($"Fehler: Anhang {attachmentId} existiert nicht!");
-        //    }
-
-        //    // ToDo: URL has to be generated automatically by some kind of url manager
-        //    // ToDo: Check if file is an image, when not, show a download link
-
-        //    if (string.IsNullOrEmpty(node.Argument)) {
-        //        string url = $"/attachment/download/{attachment.Id}";
-        //        return $"<a href='{url}'>Anhang: {attachment.FileName}</a>";
-        //    } else {
-        //        // ToDo: Monitor this. In our testforum this rarely happens when attachments got deleted without updating the post. In future we should delete them from posts, too.
-        //        string url = $"/attachment/view/{attachment.Id}";
-        //        return $"<img src='{url}' title='{attachment.FileName} - {attachment.DownloadsCount} Aufrufe' class='d-block ul-post-attachment' />";
-        //    }
-        //}
         string HtmlWarning(string text) {
             return $"<div class='alert alert-warning' role='alert'>{text}</div>";
         }
