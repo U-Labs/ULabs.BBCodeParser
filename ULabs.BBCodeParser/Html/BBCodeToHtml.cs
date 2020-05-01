@@ -28,6 +28,8 @@ namespace ULabs.BBCodeParser.Html {
             // footer is not removed cause we need it in quotes to display content author
             var disallowedTags = new List<string>() { "form", "input", "html", "body", "option", "textarea", "header", "head" };
             disallowedTags.ForEach(tag => sanitizer.AllowedTags.Remove(tag));
+            // For embedding youtube
+            sanitizer.AllowedTags.Add("iframe");
             // Required for many parsings where bootstrap classes were set
             sanitizer.AllowedAttributes.Add("class");
             // Spoiler bbcode use ids to divide between multiple spoilers on the same page
