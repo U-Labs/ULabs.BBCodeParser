@@ -38,7 +38,8 @@ namespace ULabs.BBCodeParser.Html {
                 new BBCode("[font]", (node) => $"<span style='font-family: {node.Argument}'>{node.InnerHtml}</span>"),
                 new BBCode("[shadow]", (node) => $"<span class='text-shadow'>{node.InnerHtml}</span>"),
                 new BBCode("[spoiler]", (node) => GetEmbeddRazorTemplate("Spoiler", node)),
-                new BBCode("[video]", ParseVideo)
+                new BBCode("[video]", ParseVideo),
+                new BBCode("[youtube]", (node) => EmbeddedYouTube(node.InnerContent))
             };
 
             if (overrideDefaultBBCodes) {
@@ -55,14 +56,16 @@ namespace ULabs.BBCodeParser.Html {
             string siteName = argSegments[0].ToLower();
             string videoId = argSegments[1];
             if(siteName == "youtube") {
-                string html = $"<iframe width='560' height='315' frameborder='0' src='https://www.youtube-nocookie.com/embed/{videoId}' data-youtube-id='{videoId}' allowfullscreen></iframe>";
-                return html;
+                return EmbeddedYouTube(videoId);
             }
             // Currently not supported providers
             string rawNode = node.ToString();
             return rawNode;
         }
-
+        string EmbeddedYouTube(string videoId) {
+            string html = $"<iframe width='560' height='315' frameborder='0' src='https://www.youtube-nocookie.com/embed/{videoId}' data-youtube-id='{videoId}' allowfullscreen></iframe>";
+            return html;
+        }
         string ParseHadlines(BBCodeNode node) {
             if (!int.TryParse(node.Argument, out int headlineSize)) {
                 return $"{node.OpenTag}{node.InnerHtml}{node.CloseTag}";
