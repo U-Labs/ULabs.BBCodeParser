@@ -52,6 +52,11 @@ namespace ULabs.BBCodeParser.Html {
         }
 
         string ParseVideo(BBCodeNode node) {
+            // Ignore malformed video tags
+            if (!node.Argument.Contains(";")) {
+                return node.ToString();
+            }
+
             var argSegments = node.Argument.Split(';');
             string siteName = argSegments[0].ToLower();
             string videoId = argSegments[1];
