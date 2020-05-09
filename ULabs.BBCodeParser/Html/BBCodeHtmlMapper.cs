@@ -53,7 +53,7 @@ namespace ULabs.BBCodeParser.Html {
 
         string ParseVideo(BBCodeNode node) {
             // Ignore malformed video tags
-            if (!node.Argument.Contains(";")) {
+            if (string.IsNullOrEmpty(node.Argument) || !node.Argument.Contains(";")) {
                 return node.ToString();
             }
 
