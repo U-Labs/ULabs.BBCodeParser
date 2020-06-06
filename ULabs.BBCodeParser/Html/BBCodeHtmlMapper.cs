@@ -34,6 +34,7 @@ namespace ULabs.BBCodeParser.Html {
                 new BBCode("[list=1]", "<ol>", nestedChild: new BBCode("[*]", "<li>")),
                 // new BBCode("[attach]", ParseAttachmentFunc),
                 new BBCode("[size]", ParseHadlines),
+                new BBCode("[hr]", (node) => "<hr />"),
                 new BBCode("[sup]", "<sup>"),
                 new BBCode("[font]", (node) => $"<span style='font-family: {node.Argument}'>{node.InnerHtml}</span>"),
                 new BBCode("[shadow]", (node) => $"<span class='text-shadow'>{node.InnerHtml}</span>"),
