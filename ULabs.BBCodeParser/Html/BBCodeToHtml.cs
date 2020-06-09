@@ -39,6 +39,7 @@ namespace ULabs.BBCodeParser.Html {
         }
 
         public string Parse(string bbCode) {
+            bbCode = bbCode.Trim();
             var doc = new BBCodeDocument(bbCode);
             // No new line to html parsing here. This would create too much new lines by templates like spoiler. We do this inside the parse method on the inner html.
             RemoveLineBreaksAroundBlockElements(doc.Nodes);

@@ -130,7 +130,25 @@ namespace ULabs.BBCodeParser {
                 int nextTagStartPos = bbCode.IndexOf(nodePos.Node.OpenTag, nodePos.OpenTagEnd);
                 // Case B: No further tags of the same name present, search for any next tag as ending
                 if (nextTagStartPos == -1) {
-                    nextTagStartPos = bbCode.IndexOf('[', nodePos.OpenTagEnd);
+                    // Make sure we always get the full list entry until the next starts or the list ends.
+                    // This is a fix for incorrect list parsing where [*] is parsed as seperate element as well as the following list content which happened on small lists (1 entry)
+                    if (nodePos.Node.TagName == "*") {
+                        nextTagStartPos = bbCode.IndexOf("[*", nodePos.OpenTagEnd);
+                        if(nextTagStartPos != -1) {
+                            // Dont include the tag * in our position, just the [ before
+                            nextTagStartPos--;
+                        }else {
+                            // If there are no further list items, the list end tag informs us where to stop parsing the previous list element content
+                            nextTagStartPos = bbCode.IndexOf("[/list", nodePos.OpenTagEnd, StringComparison.CurrentCultureIgnoreCase);
+                            // We also dont want to have the "/list" part included, which are 5 chars to remove from the position
+                            if(nextTagStartPos != -1) {
+                                nextTagStartPos -= 5;
+                            }
+                        }
+                    }else {
+                        // If we dont have list items, its more simple to detect where ANY new tag starts
+                        nextTagStartPos = bbCode.IndexOf('[', nodePos.OpenTagEnd);
+                    }
                 }
 
                 // Case C: No tags avaliable any more. Take anything to the end of the content
