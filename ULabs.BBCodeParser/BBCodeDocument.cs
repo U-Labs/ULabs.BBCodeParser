@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ULabs.BBCodeParser {
     public class BBCodeDocument {
-
+        char[] nodeArgumentTrimChars = new char[] { '\'', '"' };
         public string Raw { get; private set; }
         public List<BBCodeNode> Nodes { get; private set; } = new List<BBCodeNode>();
         public List<BBCodeNode> TagNodes {
@@ -202,7 +202,7 @@ namespace ULabs.BBCodeParser {
                 GetNodeCloseTagWithContent(bbCode, ref nodePos);
             }
         }
-
+        
         BBCodeNode GetNodeTagWithArguments(string fullOpenTag) {
             var node = new BBCodeNode() {
                 OpenTag = fullOpenTag
@@ -213,7 +213,8 @@ namespace ULabs.BBCodeParser {
                 .Split(new char[] { '=' }, 2);
             node.TagName = segments[0];
             if (segments.Length > 1) {
-                node.Argument = segments[1];
+                // Remove quotes, e.g. [url="https://ecosia.org"]Ecosia[/url]
+                node.Argument = segments[1].Trim(nodeArgumentTrimChars);
                 if (node.Argument.StartsWith("\"")) {
                     node.Argument = node.Argument.Substring(1, node.Argument.Length - 2);
                 }
