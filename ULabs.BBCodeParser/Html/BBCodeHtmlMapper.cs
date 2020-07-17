@@ -25,7 +25,7 @@ namespace ULabs.BBCodeParser.Html {
                 new BBCode("[s]", "<strike>"),
                 new BBCode("[center]", "<center>"),
                 new BBCode("[right]", (node) => $"<span class=\"text-xs-right\">{node.InnerHtml}</span>"),
-                new BBCode("[code]", "<pre>"),
+                new BBCode("[code]", ParseCode),
                 new BBCode("[quote]", ParseQuoteFunc),
                 new BBCode("[color]", (node) => $"<span style=\"color: {node.Argument}\">{node.InnerHtml}</span>"),
                 new BBCode("[url]", "<a>", argumentHtmlAttribute: "href"),
@@ -51,7 +51,11 @@ namespace ULabs.BBCodeParser.Html {
                 Codes.AddRange(bbCodes);
             }
         }
-
+        string ParseCode(BBCodeNode node) {
+            // In <pre> tags, line breaks were determinated by escape sequences. Additional <br /> as our parser creates would result in another line break (= empty line), so we remove it in this special case
+            string noBrInnerHtml = node.InnerHtml.Replace("<br />", "");
+            return $"<pre>{noBrInnerHtml}</pre>";
+        }
         string ParseVideo(BBCodeNode node) {
             // Ignore malformed video tags
             if (string.IsNullOrEmpty(node.Argument) || !node.Argument.Contains(";")) {
