@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using RazorLight;
 using ULabs.BBCodeParser;
 using ULabs.BBCodeParser.Html;
@@ -35,7 +36,7 @@ namespace ULabs.BBCodeParserDemo {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {
@@ -43,7 +44,6 @@ namespace ULabs.BBCodeParserDemo {
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
             app.UseRouting();
             app.UseEndpoints(endpoints => {

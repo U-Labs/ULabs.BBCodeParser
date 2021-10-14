@@ -92,6 +92,15 @@ Func<IServiceProvider, BBCodeHtmlMapper> bbCodeHtmlMapperFunc = (sp) => new BBCo
 services.AddBBCodeParser(bbCodeHtmlMapperFunc);
 ```
 
+## Known issues
+### `Cannot find reference assembly 'Microsoft.AspNetCore.Antiforgery.dll'` Exception
+This exception occurs on .NET Core 3.0 and higher. [To fix it](https://github.com/toddams/RazorLight#im-getting-cannot-find-reference-assembly-microsoftaspnetcoreantiforgerydll-exception-on-net-core-app-30-or-higher),
+add the following lines to your .csproj file:
+
+```xml
+<PreserveCompilationContext>true</PreserveCompilationContext>
+<PreserveCompilationReferences>true</PreserveCompilationReferences>
+```
 ## Motivation
 This project is part of my approach to develop on a modern .NET Core application stack for vBulletin. I did some POCs, also on the database.
 But now it's time to create a better structure. Since I believe in open source and also use a lot of OSS, I'd also like to share my work to
