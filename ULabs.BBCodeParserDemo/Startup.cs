@@ -31,7 +31,7 @@ namespace ULabs.BBCodeParserDemo {
             Func<IServiceProvider, BBCodeHtmlMapper> bbCodeHtmlMapperFunc = (sp) => new BBCodeHtmlMapper(sp.GetRequiredService<RazorLightEngine>(), customBBCodes);
             // If you don't want to use any customization, just call AddBBCodeParser without any arguments and it will use the default BBCodes 
             services.AddBBCodeParser(bbCodeHtmlMapperFunc);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +45,10 @@ namespace ULabs.BBCodeParserDemo {
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints => {
+                endpoints.MapRazorPages();
+            });
         }
     }
 }
